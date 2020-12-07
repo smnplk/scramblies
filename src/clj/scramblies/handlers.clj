@@ -11,13 +11,15 @@
             [clojure.string :as st]))
 
 
+(defn ^:private get-param [param request]
+  (some-> request
+          (get-in [:params param])
+          (st/trim)))
+
+
 (defn scramblie-handler [request]
-  (let [letters (some-> request
-                        (get-in [:params :letters])
-                        st/trim)
-        word    (some-> request
-                        (get-in [:params :word])
-                        st/trim)]
+  (let [letters (get-param :letters request)
+        word    (get-param :word request)]
     {:status 200 :body [(scramblies-api/scramble? letters word)]}))
 
 
@@ -30,10 +32,9 @@
 
 
 (def app
-  (-> (var approutes)
+  (-> approutes
       (wrap-error-handling)
       (timbre-logger/wrap-with-logger)
       (mw/wrap-format)
-      ;; (wrap-reload)
       (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))
       (wrap-resource "public")))
