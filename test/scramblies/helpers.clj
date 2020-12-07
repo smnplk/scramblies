@@ -1,5 +1,5 @@
 (ns scramblies.helpers
-  (:require [clojure.test :as t :refer [deftest is do-report]]))
+  (:require [clojure.test :as t :refer [do-report]]))
 
 ;; credits to borkdude
 ;; https://clojureverse.org/t/testing-thrown-ex-info-exceptions/6146/3

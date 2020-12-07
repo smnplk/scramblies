@@ -1,7 +1,7 @@
 (ns scramblies.handlers
   (:require [scramblies.api :as scramblies-api]
             [scramblies.middleware.errors :refer [wrap-error-handling]]
-            [compojure.core :refer :all]
+            [compojure.core :refer [defroutes GET POST]]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [site-defaults  wrap-defaults]]
             [scramblies.template :refer [main-page]]

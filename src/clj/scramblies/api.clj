@@ -44,5 +44,5 @@
     (or (st/blank? letters) (st/blank? word))
     (throw (errors/unprocessable-entity "`letters` or `word` string is blank"))
 
-    :default
+    :else
     (*scramble? letters word)))

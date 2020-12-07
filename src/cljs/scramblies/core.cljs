@@ -1,6 +1,5 @@
 (ns scramblies.core
-  (:require [reagent.core :as reagent :refer [atom]]
-            [reagent.dom :as rd]
+  (:require [reagent.dom :as rd]
             [re-frame.core :as rf]
             [scramblies.handlers]
             [scramblies.subs]
